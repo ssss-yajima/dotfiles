@@ -1,0 +1,61 @@
+{
+	// VSNote
+	"vsnotes.defaultNotePath": "/Users/syajima/develop/MyActivities/vsnote",
+	"vsnotes.defaultNoteTitle": "{title}_{dt}.{ext}",
+	"vsnotes.listRecentLimit": 30,
+	"vsnotes.templates": [
+		"seminar",
+		"book",
+	],
+	"vsnotes.defaultSnippet": {
+		"langId": "markdown",
+		"name": "vsnote_template_default"
+	},
+	"python.jediEnabled": false,
+	"explorer.confirmDragAndDrop": false,
+	"window.zoomLevel": -1,
+	"editor.suggestSelection": "first",
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"git.enableSmartCommit": true,
+	"editor.detectIndentation": true,
+
+	"files.associations": {
+		"*.vue": "vue"
+	},
+	"[python]": {
+		"editor.tabSize": 4
+	},
+	"eslint.validate": [
+		{
+			"language": "vue",
+			"autoFix": true
+		},
+		{
+			"language": "javascript",
+			"autoFix": true
+		}
+	],
+	"eslint.autoFixOnSave": true,
+
+	// Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
+	"editor.insertSpaces": true,
+	// Controls whether the editor should render whitespace characters
+	"editor.renderWhitespace": "all",
+
+	"vetur.format.defaultFormatter.js": "prettier-eslint",
+	"editor.formatOnSave": false,
+	"editor.formatOnPaste": true,
+	"editor.tabSize": 2,
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"editor.fontSize": 14,
+	"debug.console.fontSize": 13,
+	"terminal.integrated.fontSize": 13,
+}
