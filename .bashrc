@@ -19,6 +19,9 @@ alias git='hub'
 alias gi='git issue'
 alias gic='git issue create -m'
 
+# python3
+alias python=python3
+
 # prompto
 PS1='\[\e[34m\]\w \[\e[37m\]\$\[\e[0m\] '
 
