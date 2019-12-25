@@ -1,15 +1,17 @@
 {
 	// VSNote
 	"vsnotes.defaultNotePath": "/Users/syajima/develop/MyActivities/vsnote/notes",
-	"vsnotes.defaultNoteTitle": "{title}_{dt}.{ext}",
+	"vsnotes.defaultNoteTitle": "{title}.{ext}",
 	"vsnotes.listRecentLimit": 30,
 	"vsnotes.templates": [
+		"mydefault",
 		"seminar",
 		"book",
+		"blog",
 	],
 	"vsnotes.defaultSnippet": {
 		"langId": "markdown",
-		"name": "vsnote_template_default"
+		"name": "vsnote_template_mydefault"
 	},
 	"python.jediEnabled": false,
 	"explorer.confirmDragAndDrop": false,

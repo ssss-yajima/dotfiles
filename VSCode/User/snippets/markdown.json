@@ -13,11 +13,11 @@
 	// 	"description": "Log output to console"
 	// }
 
-"vsnote_template_default": {
-	"prefix": "vsnote_template_book",
+"vsnote_template_mydefault": {
+	"prefix": "vsnote_template_mydefault",
 	"body": [
 		"---",
-		"title: $1",
+		"title: $TM_FILENAME_BASE",
 		"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
 		"tags:",
 		"  - $2",
@@ -26,17 +26,32 @@
 	],
 	"description": "Default template",
 },
+"vsnote_template_blog": {
+	"prefix": "vsnote_template_blog",
+	"body": [
+		"---",
+		"title: $TM_FILENAME_BASE",
+		"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+		"tags:",
+		"  - blog",
+		"  - WIP",
+		"  - $2",
+		"---",
+		"$3",
+	],
+	"description": "Template for blog",
+},
 	"vsnote_template_seminar": {
 		"prefix": "vsnote_template_seminar",
 		"body": [
 			"---",
-			"title: $1",
+			"title: $TM_FILENAME_BASE",
 			"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
 			"tags:",
 			"  - seminar",
 			"  - $2",
 			"---",
-			"# $1",
+			"# $TM_FILENAME_BASE",
 			"場所：$3",
 			"",
 			"# 概要",
@@ -49,14 +64,14 @@
 	"prefix": "vsnote_template_book",
 	"body": [
 			"---",
-			"title: $1",
+			"title: $TM_FILENAME_BASE",
 			"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
 			"tags:",
 			"  - book",
 			"  - $2",
 			"---",
 
-			"# $1",
+			"# $TM_FILENAME_BASE",
 			"著者：$3",
 			"出版社：$4",
 			"版：$5",
