@@ -1,6 +1,6 @@
 {
 	// VSNote
-	"vsnotes.defaultNotePath": "/Users/syajima/develop/MyActivities/vsnote",
+	"vsnotes.defaultNotePath": "/Users/syajima/develop/MyActivities/vsnote/notes",
 	"vsnotes.defaultNoteTitle": "{title}_{dt}.{ext}",
 	"vsnotes.listRecentLimit": 30,
 	"vsnotes.templates": [
@@ -43,7 +43,6 @@
 	"editor.renderWhitespace": "all",
 
 	"vetur.format.defaultFormatter.js": "prettier-eslint",
-	"editor.formatOnSave": false,
 	"editor.formatOnPaste": true,
 	"editor.tabSize": 2,
 	"[html]": {
@@ -58,4 +57,11 @@
 	"editor.fontSize": 14,
 	"debug.console.fontSize": 13,
 	"terminal.integrated.fontSize": 13,
+	"python.pythonPath": "/usr/local/bin/python3",
+	"markdown-preview-enhanced.breakOnSingleNewLine": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"python.formatting.provider": "yapf",
+	"editor.fontFamily": "SourceHanCodeJP-Regular, Menlo, Monaco, 'Courier New', monospace",
 }
