@@ -1,6 +1,6 @@
 {
 	// VSNote
-	"vsnotes.defaultNotePath": "/Users/syajima/develop/MyActivities/vsnote/notes",
+	"vsnotes.defaultNotePath": "/Users/syajima/develop/MyActivities/docs",
 	"vsnotes.defaultNoteTitle": "{title}.{ext}",
 	"vsnotes.listRecentLimit": 30,
 	"vsnotes.templates": [
