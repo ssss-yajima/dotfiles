@@ -23,7 +23,6 @@ alias gic='git issue create -m'
 alias python=python3
 alias pip=pip3
 
-# prompto
-PS1='\[\e[34m\]\w \[\e[37m\]\$\[\e[0m\] '
+
 
 

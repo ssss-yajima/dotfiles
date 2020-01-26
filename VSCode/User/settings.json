@@ -15,7 +15,6 @@
 	},
 	"python.jediEnabled": false,
 	"explorer.confirmDragAndDrop": false,
-	"window.zoomLevel": -1,
 	"editor.suggestSelection": "first",
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 	"git.enableSmartCommit": true,
@@ -57,8 +56,8 @@
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 	"editor.fontSize": 14,
-	"debug.console.fontSize": 13,
-	"terminal.integrated.fontSize": 13,
+	"debug.console.fontSize": 14,
+	"terminal.integrated.fontSize": 14,
 	"python.pythonPath": "/usr/local/bin/python3",
 	"markdown-preview-enhanced.breakOnSingleNewLine": false,
 	"editor.codeActionsOnSave": {
@@ -66,4 +65,7 @@
 	},
 	"python.formatting.provider": "yapf",
 	"editor.fontFamily": "SourceHanCodeJP-Regular, Menlo, Monaco, 'Courier New', monospace",
+	"vsicons.dontShowNewVersionMessage": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"window.zoomLevel": -1,
 }
