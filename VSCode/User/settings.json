@@ -68,4 +68,11 @@
 	"vsicons.dontShowNewVersionMessage": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"window.zoomLevel": -1,
+	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/Users/syajima/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
+	"java.configuration.checkProjectSettingsExclusions": false,
+	"editor.formatOnSave": true,
+	"java.saveActions.organizeImports": true,
+	"gradle.debug": true,
+	"boot-java.change-detection.on": true,
+	"explorer.confirmDelete": false,
 }
