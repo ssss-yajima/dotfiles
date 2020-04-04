@@ -1,12 +1,16 @@
 [user]
-	name = y_megane_IDEA
-	email = y.megane88@gmail.com
+    name = y_megane
+    email = y.megane88@gmail.com
+[push]
+    default = current
+[core]
+    autocrlf = false
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [alias]
-	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+    graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [fetch]
     prune = true
