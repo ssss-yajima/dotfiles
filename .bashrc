@@ -1,21 +1,17 @@
 # bashrc
 
+# completion for sudo command
+complete -cf sudo
+
 #========= ailias ============
-alias ls='ls -G'
-alias ll='ls -lGh '
-alias la='ls -laGh'
+alias ..='cd ..'
+alias _='cd -'
+alias ls='ls -FG'
+alias ll='ls -lFGh '
+alias la='ls -laFGh'
 
 # git
-alias gs='git status'
-alias ga='git add'
-alias gA='git add -A'
-alias gb='git branch'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gf='git fetch'
-alias gps='git push'
-alias gpl='git pull'
-alias grl='git reflog'
+alias g='git'
 
 # hub
 alias git='hub'
