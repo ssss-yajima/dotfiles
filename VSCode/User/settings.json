@@ -55,9 +55,9 @@
 	"[json]": {
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
-	"editor.fontSize": 14,
-	"debug.console.fontSize": 14,
-	"terminal.integrated.fontSize": 14,
+	"editor.fontSize": 16,
+	"debug.console.fontSize": 16,
+	"terminal.integrated.fontSize": 16,
 	"python.pythonPath": "/usr/local/bin/python3",
 	"markdown-preview-enhanced.breakOnSingleNewLine": false,
 	"editor.codeActionsOnSave": {
@@ -75,4 +75,6 @@
 	"gradle.debug": true,
 	"boot-java.change-detection.on": true,
 	"explorer.confirmDelete": false,
+	"markdown.preview.fontSize": 16,
+	"vim.easymotionMarkerFontSize": "16",
 }
