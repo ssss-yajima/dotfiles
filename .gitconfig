@@ -20,10 +20,11 @@
 	A = add -A
 	br = branch
 	c = commit
+    cinit = commit --allow-empty -m "Initial commit"
 	ch = checkout
 	f = fetch
 	F = fetch --all
 	ps = push
 	pl = pull
 	s = status -sb
-	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	g = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short

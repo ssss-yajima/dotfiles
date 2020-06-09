@@ -44,7 +44,6 @@
 	"editor.renderWhitespace": "all",
 
 	"vetur.format.defaultFormatter.js": "prettier-eslint",
-	"editor.formatOnPaste": true,
 	"editor.tabSize": 2,
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -70,11 +69,13 @@
 	"window.zoomLevel": -1,
 	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/Users/syajima/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
 	"java.configuration.checkProjectSettingsExclusions": false,
-	"editor.formatOnSave": true,
 	"java.saveActions.organizeImports": true,
 	"gradle.debug": true,
 	"boot-java.change-detection.on": true,
 	"explorer.confirmDelete": false,
 	"markdown.preview.fontSize": 16,
 	"vim.easymotionMarkerFontSize": "16",
+	"java.semanticHighlighting.enabled": true,
+	"java.format.enabled": false,
+	"html.format.preserveNewLines": false,
 }

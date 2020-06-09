@@ -24,4 +24,5 @@ alias pip=pip3
 
 
 
-
+# Gitコマンド補完
+source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
