@@ -18,6 +18,7 @@ export PS1="\[\e[34m\]\w\[\e[37m\]\[\e[0m\]\$(parse_git_branch)\[\033[00m\] $ "
 export ORACLE_HOME=~/lib/instantclient_19_3
 export PATH=~/lib/instantclient_19_3:$PATH
 export ORACLE_SID=orclepdb1
+export LAMBDAKEY=UeVizakqDC8fyYJXEZTkx2eeZ4cZ1baj1vXWCSXy
 
 
 # ========== Python =========

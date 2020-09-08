@@ -22,7 +22,6 @@ alias gic='git issue create -m'
 alias python=python3
 alias pip=pip3
 
-
-
-# Gitコマンド補完
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+# docker
+alias d='docker'
+alias d-c='docker-compose'
