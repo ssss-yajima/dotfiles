@@ -14,12 +14,9 @@ parse_git_branch() {
 }
 export PS1="\[\e[34m\]\w\[\e[37m\]\[\e[0m\]\$(parse_git_branch)\[\033[00m\] $ "
 
-# ========== Oracle =========
-export ORACLE_HOME=~/lib/instantclient_19_3
-export PATH=~/lib/instantclient_19_3:$PATH
-export ORACLE_SID=orclepdb1
-export LAMBDAKEY=UeVizakqDC8fyYJXEZTkx2eeZ4cZ1baj1vXWCSXy
-
+# GO
+export GOPATH=$HOME/go
+export GO111MODULE=on
 
 # ========== Python =========
 export PATH=/usr/local/bin:$PATH
@@ -30,3 +27,6 @@ if [ -f '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Us
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+# AWS Lambda
+export LAMBDAKEY=UeVizakqDC8fyYJXEZTkx2eeZ4cZ1baj1vXWCSXy

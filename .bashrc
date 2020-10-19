@@ -25,3 +25,9 @@ alias pip=pip3
 # docker
 alias d='docker'
 alias d-c='docker-compose'
+
+# bash-completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
