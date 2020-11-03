@@ -31,3 +31,7 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
 
+# Zenn.dev
+alias zenn-article='npx zenn new:article'
+alias zenn-book='npx zenn new:book'
+alias zenn-prv='npx zenn preview'
