@@ -52,7 +52,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "python.pythonPath": "/usr/local/bin/python3",
   "python.formatting.provider": "yapf",
