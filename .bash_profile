@@ -28,5 +28,4 @@ if [ -f '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Us
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 
-# AWS Lambda
-export LAMBDAKEY=UeVizakqDC8fyYJXEZTkx2eeZ4cZ1baj1vXWCSXy
+
