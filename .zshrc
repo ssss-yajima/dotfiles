@@ -141,10 +141,9 @@ alias zenn-prv='npx zenn preview'
 # --- peco
 # pecoに流す系はp始まりとする
 alias pcd='cd $(ghq list -p | peco)'
-bindkey '^G' pcd
 alias pls='ls -alt|peco'
 # pecoでsshするalias - Qiita http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
-alias sshp='ssh $(grep "^Host" ~/.ssh/config|peco|awk "{print \$2}")'
+alias pssh='ssh $(grep "^Host" ~/.ssh/config|peco|awk "{print \$2}")'
 # ghq + peco
 alias pghq-list='ghq list -p | peco'
 # ghq + peco + VSCode
