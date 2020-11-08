@@ -54,12 +54,12 @@ setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u%b%f"
+zstyle ':vcs_info:*' formats "(%F{green}%c%u%b%f)"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd(){ vcs_info }
 
 
-PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}(${vcs_info_msg_0_})
+PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}${vcs_info_msg_0_}
 %# '
 #RPROMPT='%n@%m'
 
@@ -73,6 +73,18 @@ function peco-history-selection() {
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+# ghqで取得したリポジトリへの移動
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^V' peco-src
 
 #========= ailias ============
 alias ..='cd ..'
@@ -112,6 +124,7 @@ alias zenn-prv='npx zenn preview'
 # --- peco
 # pecoに流す系はp始まりとする
 alias pcd='cd $(ghq list -p | peco)'
+bindkey '^G' pcd
 alias pls='ls -alt|peco'
 # pecoでsshするalias - Qiita http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
 alias sshp='ssh $(grep "^Host" ~/.ssh/config|peco|awk "{print \$2}")'
