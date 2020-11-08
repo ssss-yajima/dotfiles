@@ -86,6 +86,20 @@ function peco-src () {
 zle -N peco-src
 bindkey '^V' peco-src
 
+# GitHub APIを利用して自分のリポジトリ一覧を出力
+function gh-user-repos(){
+  echo "<<GitHub ... /user/repos>>>"
+  curl -su :$GITHUB_MYTOKEN $GITHUB_BASEURL/user/repos|jq -r ".[].name"
+}
+zle -N gh-user-repos
+
+# GitHub APIから取得したリポジトリ一覧をpecoで検索してghq get
+functions ghq-get-my-repos(){
+  gh-user-repos | peco | ghq get
+}
+zle -N ghq-get-my-repos
+bindkey '^X^G' ghq-get-my-repos
+
 #========= ailias ============
 alias ..='cd ..'
 alias _='cd -'
