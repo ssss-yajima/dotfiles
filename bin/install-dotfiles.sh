@@ -1,8 +1,8 @@
-DOT="$HOME/develop/dotfiles"
+DOT="$HOME/ghq/github.com/y-megane/dotfiles"
 
 ln -sf $DOT/.bashrc ~/.bashrc
 ln -sf $DOT/.bashrc ~/.bash_profile
-ln -sf $DOT/.bashrc ~/.zshrc
+ln -sf $DOT/.zshrc ~/.zshrc
 ln -sf $DOT/.vimrc ~/.vimrc
 ln -sf $DOT/.ssh/config ~/.ssh/config
 

@@ -89,7 +89,7 @@ bindkey '^V' peco-src
 # GitHub APIを利用して自分のリポジトリ一覧を出力
 function gh-user-repos(){
   echo "<<GitHub ... /user/repos>>>"
-  curl -su :$GITHUB_MYTOKEN $GITHUB_BASEURL/user/repos|jq -r ".[].name"
+  curl -su :$GITHUB_MYTOKEN https://api.github.com/user/repos|jq -r ".[].name"
 }
 zle -N gh-user-repos
 
@@ -119,8 +119,11 @@ alias szsh='source ~/.zshrc'
 # git
 alias g='git'
 alias ga='git add'
+alias gA='git add -A'
 alias gs='git status -sb'
 alias gc='git commit'
+alias gc='git commit -m'
+alias gAC='git add -A;git commit -m'
 
 # python3
 alias python=python3
