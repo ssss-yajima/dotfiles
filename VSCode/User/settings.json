@@ -91,5 +91,6 @@
     }
   },
   "go.formatTool": "goimports",
-  "window.zoomLevel": -1
+  "window.zoomLevel": -1,
+  "workbench.colorTheme": "One Dark Pro"
 }
