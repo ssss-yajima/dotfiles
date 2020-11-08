@@ -47,7 +47,7 @@ fi
 autoload -U compinit
 compinit -u
 
-# --- prompt
+# --- vcs_info
 autoload -Uz vcs_info
 setopt prompt_subst
 
@@ -58,11 +58,22 @@ zstyle ':vcs_info:*' formats "(%F{green}%c%u%b%f)"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd(){ vcs_info }
 
-
+# --- prompt
 PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}${vcs_info_msg_0_}
 %# '
 #RPROMPT='%n@%m'
 
+# --- cdr
+# cdr, add-zsh-hook を有効にする
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+# cdr の設定
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':chpwd:*' recent-dirs-max 500
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
+zstyle ':chpwd:*' recent-dirs-pushd true
 
 # =========== functions =========
 # Ctrl-R のヒストリ検索にpeco利用
@@ -85,6 +96,18 @@ function peco-src () {
 }
 zle -N peco-src
 bindkey '^V' peco-src
+
+# cdr + peco
+function peco-cdr() {
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-cdr
+bindkey '^Y' peco-cdr
 
 # GitHub APIを利用して自分のリポジトリ一覧を出力
 function gh-user-repos(){
@@ -122,7 +145,7 @@ alias ga='git add'
 alias gA='git add -A'
 alias gs='git status -sb'
 alias gc='git commit'
-alias gc='git commit -m'
+alias gC='git commit -m'
 alias gAC='git add -A;git commit -m'
 
 # python3
