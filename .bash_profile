@@ -1,5 +1,7 @@
 ## .bash_profile
 
+HISTFILESIZE=10000
+
 # shopt
 shopt -s globstar
 
