@@ -105,7 +105,7 @@ alias szsh='source ~/.zshrc'
 # git
 alias g='git'
 alias ga='git add'
-alias gs='git status'
+alias gs='git status -sb'
 alias gc='git commit'
 
 # python3

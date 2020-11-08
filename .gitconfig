@@ -6,6 +6,9 @@
 	autocrlf = false
 [color]
 	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -20,7 +23,8 @@
 	A = add -A
 	br = branch
 	c = commit
-    cinit = commit --allow-empty -m "Initial commit"
+	C = commit -m
+	cinit = commit --allow-empty -m "Initial commit"
 	ch = checkout
 	f = fetch
 	F = fetch --all
@@ -29,6 +33,6 @@
 	s = status -sb
 	g = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [ghq]
-    root = ~/go/src
+	root = ~/go/src
 	root = ~/ghq
-    
+
