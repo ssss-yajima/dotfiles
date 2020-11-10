@@ -123,6 +123,14 @@ functions ghq-get-my-repos(){
 zle -N ghq-get-my-repos
 bindkey '^X^G' ghq-get-my-repos
 
+# .snippetを検索
+functions find-my-snippet(){
+  cat ~/.snippets|peco
+}
+zle -N find-my-snippet
+bindkey '^X^F' find-my-snippet
+
+
 #========= ailias ============
 alias ..='cd ..'
 alias _='cd -'

@@ -4,4 +4,5 @@
 - Numbers
 - KyeNote
 - Focus Timer
+- Karabiner
 
