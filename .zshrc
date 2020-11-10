@@ -1,3 +1,22 @@
+# ======= 環境変数 =========
+# GitHub
+export GH_USER="y-megane"
+
+# GO
+export GOPATH=$HOME/go
+export GOSRC=$GOPATH/src
+export GO111MODULE=on
+
+# Python
+export PATH=/usr/local/bin:$PATH
+
+# GCP
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
 # =========== config ===========
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -130,10 +149,20 @@ functions find-my-snippet(){
 zle -N find-my-snippet
 bindkey '^X^F' find-my-snippet
 
+# Goのプロジェクトを新規作成
+functions go-init(){
+  local pj="github.com/$GH_USER/$1"
+  local pj_path="$GOSRC/${pj}"
+  echo "Creating project... [${pj_path}]"
+  read -p ">> Pless any key to continue."
+  mkdir -p ${pj_path}
+  cd ${pj_path}
+  go mod init ${pj}
+  git init
+}
+zle -N go-init
 
 #========= ailias ============
-alias ..='cd ..'
-alias _='cd -'
 alias ls='ls -FG'
 alias ll='ls -lFGh '
 alias la='ls -laFGh'
@@ -181,21 +210,5 @@ alias pghq-list='ghq list -p | peco'
 alias pcode-ghq='code $(ghq list -p | peco)'
 # git + peco
 alias pgit-co='git checkout `git branch | peco`'
-
-
-# ======= 環境変数 =========
-# GO
-export GOPATH=$HOME/go
-export GO111MODULE=on
-
-# Python
-export PATH=/usr/local/bin:$PATH
-
-# GCP
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 
 
