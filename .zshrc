@@ -1,23 +1,7 @@
 # ======= 環境変数 =========
-# GitHub
-export GH_USER="y-megane"
-
-# GO
-export GOPATH=$HOME/go
-export GOSRC=$GOPATH/src
-export GO111MODULE=on
-
 # Python
 export PATH=/usr/local/bin:$PATH
 
-# GCP
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/syajima/Downloads/google-cloud-sdk/completion.bash.inc'; fi
-
-# =========== config ===========
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
@@ -128,40 +112,6 @@ function peco-cdr() {
 zle -N peco-cdr
 bindkey '^Y' peco-cdr
 
-# GitHub APIを利用して自分のリポジトリ一覧を出力
-function gh-user-repos(){
-  echo "<<GitHub ... /user/repos>>>"
-  curl -su :$GITHUB_MYTOKEN https://api.github.com/user/repos|jq -r ".[].name"
-}
-zle -N gh-user-repos
-
-# GitHub APIから取得したリポジトリ一覧をpecoで検索してghq get
-functions ghq-get-my-repos(){
-  gh-user-repos | peco | ghq get
-}
-zle -N ghq-get-my-repos
-bindkey '^X^G' ghq-get-my-repos
-
-# .snippetを検索
-functions find-my-snippet(){
-  cat ~/.snippets|peco
-}
-zle -N find-my-snippet
-bindkey '^X^F' find-my-snippet
-
-# Goのプロジェクトを新規作成
-functions go-init(){
-  local pj="github.com/$GH_USER/$1"
-  local pj_path="$GOSRC/${pj}"
-  echo "Creating project... [${pj_path}]"
-  read -p ">> Pless any key to continue."
-  mkdir -p ${pj_path}
-  cd ${pj_path}
-  go mod init ${pj}
-  git init
-}
-zle -N go-init
-
 #========= ailias ============
 alias ls='ls -FG'
 alias ll='ls -lFGh '
@@ -188,15 +138,6 @@ alias gAC='git add -A;git commit -m'
 # python3
 alias python=python3
 alias pip=pip3
-
-# docker
-alias d='docker'
-alias d-c='docker-compose'
-
-# Zenn.dev
-alias zenn-article='npx zenn new:article'
-alias zenn-book='npx zenn new:book'
-alias zenn-prv='npx zenn preview'
 
 # --- peco
 # pecoに流す系はp始まりとする

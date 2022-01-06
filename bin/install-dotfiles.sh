@@ -1,4 +1,4 @@
-DOT="$HOME/ghq/github.com/y-megane/dotfiles"
+DOT="$HOME/go/src/github.com/y-megane/dotfiles"
 
 ln -sf $DOT/.bashrc ~/.bashrc
 ln -sf $DOT/.bashrc ~/.bash_profile
