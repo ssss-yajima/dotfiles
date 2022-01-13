@@ -20,17 +20,14 @@
 	default = current
 [alias]
 	a = add
-	A = add -A
-	br = branch
+	b = branch
 	c = commit
-	C = commit -m
-	cinit = commit --allow-empty -m "Initial commit"
 	ch = checkout
 	f = fetch
-	F = fetch --all
 	ps = push
 	pl = pull
 	s = status -sb
+	sw = switch
 	g = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [ghq]
 	root = ~/go/src
