@@ -8,6 +8,14 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+# pyenvのバージョンをプロンプトに表示
+# https://yonchu.hatenablog.com/entry/2014/09/03/211008
+source ~/work/zsh/zsh-python-prompt/zshrc.zsh
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
@@ -71,6 +79,10 @@ precmd(){ vcs_info }
 PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}${vcs_info_msg_0_}
 %# '
 #RPROMPT='%n@%m'
+
+# pyenvのバージョンをプロンプトに表示
+# https://yonchu.hatenablog.com/entry/2014/09/03/211008
+RPROMPT='$ZSH_PYTHON_PROMPT'
 
 # --- cdr
 # cdr, add-zsh-hook を有効にする
