@@ -8,6 +8,19 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+# 補完
+# zsh-completion
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+autoload -Uz compinit && compinit
+
+# AWS
+autoload bashcompinit && bashcompinit
+complete -C aws_completer aws
+
+
+
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
@@ -49,12 +62,6 @@ setopt pushd_ignore_dups
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# zsh-completion
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-autoload -U compinit
-compinit -u
 
 # --- vcs_info
 autoload -Uz vcs_info
@@ -151,5 +158,5 @@ alias pghq-list='ghq list -p | peco'
 alias pcode-ghq='code $(ghq list -p | peco)'
 # git + peco
 alias pgit-co='git checkout `git branch | peco`'
-
-
+# terraform
+alias tf=terraform
