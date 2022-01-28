@@ -23,7 +23,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # AWS
 autoload bashcompinit && bashcompinit
-complete -C aws_completer aws
+complete -C '/usr/local/bin/aws_completer' aws
 
 # ======================== プロンプト =========================
 # pyenvのバージョンをプロンプトに表示
