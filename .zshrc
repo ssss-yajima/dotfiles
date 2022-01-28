@@ -1,4 +1,4 @@
-# ======= 環境変数 =========
+# ========================== 環境変数 =================================
 # Python
 export PATH=/usr/local/bin:$PATH
 
@@ -8,7 +8,10 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-# 補完
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# ===================  補完  ================================
 # zsh-completion
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
@@ -22,13 +25,25 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 autoload bashcompinit && bashcompinit
 complete -C aws_completer aws
 
+# ======================== プロンプト =========================
 # pyenvのバージョンをプロンプトに表示
 # https://yonchu.hatenablog.com/entry/2014/09/03/211008
 source ~/work/zsh/zsh-python-prompt/zshrc.zsh
 
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+# --- prompt
+PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}${vcs_info_msg_0_}
+%# '
+#RPROMPT='%n@%m'
 
+# pyenvのバージョンをプロンプトに表示
+# https://yonchu.hatenablog.com/entry/2014/09/03/211008
+RPROMPT='$ZSH_PYTHON_PROMPT'
+
+# --- vcs_info
+autoload -Uz vcs_info
+setopt prompt_subst
+
+# ================================================================
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -69,10 +84,6 @@ setopt pushd_ignore_dups
 
 
 
-# --- vcs_info
-autoload -Uz vcs_info
-setopt prompt_subst
-
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
@@ -80,14 +91,6 @@ zstyle ':vcs_info:*' formats "(%F{green}%c%u%b%f)"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd(){ vcs_info }
 
-# --- prompt
-PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}${vcs_info_msg_0_}
-%# '
-#RPROMPT='%n@%m'
-
-# pyenvのバージョンをプロンプトに表示
-# https://yonchu.hatenablog.com/entry/2014/09/03/211008
-RPROMPT='$ZSH_PYTHON_PROMPT'
 
 # --- cdr
 # cdr, add-zsh-hook を有効にする
@@ -101,7 +104,7 @@ zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
 zstyle ':chpwd:*' recent-dirs-pushd true
 
-# =========== functions =========
+# ============================== functions ================================
 # Ctrl-R のヒストリ検索にpeco利用
 function peco-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
@@ -135,7 +138,7 @@ function peco-cdr() {
 zle -N peco-cdr
 bindkey '^Y' peco-cdr
 
-#========= ailias ============
+#============================= ailias ===========================
 alias ls='ls -FG'
 alias ll='ls -lFGh '
 alias la='ls -laFGh'
@@ -168,5 +171,6 @@ alias pghq-list='ghq list -p | peco'
 alias pcode-ghq='code $(ghq list -p | peco)'
 # git + peco
 alias pgit-co='git checkout `git branch | peco`'
+
 # terraform
 alias tf=terraform
