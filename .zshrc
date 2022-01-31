@@ -11,6 +11,12 @@ eval "$(pyenv init -)"
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
+# go
+export PATH=$HOME/go/bin:$PATH
+
+# Serverlessでconfigを認識させる
+export AWS_SDK_LOAD_CONFIG=1
+
 # ===================  補完  ================================
 # zsh-completion
 if [ -e /usr/local/share/zsh-completions ]; then
