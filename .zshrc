@@ -160,6 +160,13 @@ alias szsh='source ~/.zshrc'
 
 # git
 alias g='git'
+alias master='git switch master'
+
+# gh
+alias issue='gh issue create'
+alias issueme='gh issue create --assignee @me'
+alias issues='gh issue list'
+alias pr='gh pr create'
 
 # python3
 alias python=python3
@@ -180,3 +187,6 @@ alias pgit-co='git checkout `git branch | peco`'
 
 # terraform
 alias tf=terraform
+
+# AWS profiles
+alias roles='cat ~/.aws/config|grep "\[profile"|sed -r "s/^.+ (.+)]$/\1/g"'
