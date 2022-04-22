@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 # ========================== 環境変数 =================================
 # Python
 export PATH=/usr/local/bin:$PATH
@@ -17,6 +19,12 @@ export PATH=$HOME/go/bin:$PATH
 # Serverlessでconfigを認識させる
 export AWS_SDK_LOAD_CONFIG=1
 
+# ====================== Plugin ============================
+plugins=(
+    # other plugins...
+    zsh-autosuggestions
+)
+
 # ===================  補完  ================================
 # zsh-completion
 if [ -e /usr/local/share/zsh-completions ]; then
@@ -30,6 +38,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # AWS
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
+
+#compdef awsume
+_arguments "*: :($(awsume-autocomplete))"
 
 # ======================== プロンプト =========================
 # pyenvのバージョンをプロンプトに表示
@@ -190,3 +201,8 @@ alias tf=terraform
 
 # AWS profiles
 alias roles='cat ~/.aws/config|grep "\[profile"|sed -r "s/^.+ (.+)]$/\1/g"'
+
+alias awsume=". /Users/shinya_yajima/.pyenv/versions/3.8.7/bin/awsume"
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
