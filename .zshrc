@@ -156,9 +156,6 @@ zle -N peco-cdr
 bindkey '^Y' peco-cdr
 
 #============================= ailias ===========================
-alias ls='ls -FG'
-alias ll='ls -lFGh '
-alias la='ls -laFGh'
 
 # C で標準出力をクリップボードにコピーする : http://mollifier.hatenablog.com/entry/20100317/p1
 alias -g C='| pbcopy'
@@ -169,40 +166,27 @@ alias -g P='| peco'
 alias zsh='code ~/.zshrc'
 alias szsh='source ~/.zshrc'
 
+alias cat='bat'
+alias ls='exa'
+alias la="ls -lah"
+alias diff='delta'
+
 # git
 alias g='git'
 alias master='git switch master'
+
+# python
+alias python=python3
+alias pip=pip3
 
 # gh
 alias issue='gh issue create'
 alias issueme='gh issue create --assignee @me'
 alias issues='gh issue list'
-alias pr='gh pr create'
+alias pr='gh pr create --assignee @me'
 
-# python3
-alias python=python3
-alias pip=pip3
-
-# --- peco
-# pecoに流す系はp始まりとする
-alias pcd='cd $(ghq list -p | peco)'
-alias pls='ls -alt|peco'
-# pecoでsshするalias - Qiita http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
-alias pssh='ssh $(grep "^Host" ~/.ssh/config|peco|awk "{print \$2}")'
-# ghq + peco
-alias pghq-list='ghq list -p | peco'
-# ghq + peco + VSCode
-alias pcode-ghq='code $(ghq list -p | peco)'
-# git + peco
-alias pgit-co='git checkout `git branch | peco`'
-
-# terraform
-alias tf=terraform
-
-# AWS profiles
-alias roles='cat ~/.aws/config|grep "\[profile"|sed -r "s/^.+ (.+)]$/\1/g"'
-
-alias awsume=". /Users/shinya_yajima/.pyenv/versions/3.8.7/bin/awsume"
+# awsume
+alias awsume="zsh (pyenv which awsume)"
 
 # Fig post block. Keep at the bottom of this file.
 . "$HOME/.fig/shell/zshrc.post.zsh"

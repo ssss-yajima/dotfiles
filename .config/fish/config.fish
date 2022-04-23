@@ -1,3 +1,8 @@
+#Show fish logo
+if type -q fish_logo
+    fish_logo
+end
+
 # for M1 mac
 if test (uname -sm) = "Darwin arm64"
     eval (/opt/homebrew/bin/brew shellenv)
@@ -24,6 +29,7 @@ set -g theme_newline_cursor yes
 set -g theme_date_format "+%Y-%m-%d %H:%M:%S"
 set -g theme_color_scheme terminal-dark
 set -g theme_newline_prompt '$ '
+set -g fish_prompt_pwd_dir_length 0
 
 # ------------ alias -----------------
 

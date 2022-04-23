@@ -2,7 +2,7 @@
 
 cd (dirname (status -f)) && source init.fish
 
-set GO_VERSION (get-version go "1.18")
+set GO_VERSION "1.18"
 
 switch (uname -m)
     case "arm64"
