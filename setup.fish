@@ -13,7 +13,7 @@ if not test -d $DOT_PATH
 end
 
 
-link-file .gitconfig .gitignore_global .zshrc .config/fish/config.fish #.config/fish/fish_plugins
+link-file .gitconfig .gitignore_global .zshrc .config/fish/config.fish .config/fish/fish_plugins .vimrc .zshrc
 
 source-config
 
@@ -22,11 +22,12 @@ if not test -d $CACHE_PATH
     mkdir $CACHE_PATH
 end
 
-brew-install jq pwgen tree gh peco ghq
+# install cli tools with brew
+brew-install jq pwgen tree gh peco ghq bat git-delta exa
 
 # fisher
 if not test -e $HOME/.config/fish/functions/fisher.fish
-    curl -sL https://git.io/fisher | source
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 end
 fisher install (cat $DOT_PATH/.config/fish/fish_plugins)
 
@@ -37,6 +38,14 @@ if not test -e $CACHE_PATH/font
 end
 cd fonts && git pull && ./install.sh
 
+# target
+set TARGETS python node
+if test -f $DOT_PATH/.target
+    set TARGETS (cat $DOT_PATH/.target)
+end
 
+for t in $TARGETS
+    cd $DOT_PATH && source setup-$t.fish
+end
 
 source-config

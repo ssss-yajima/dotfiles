@@ -4,7 +4,9 @@
 [core]
 	filemode = false
 	autocrlf = false
-
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
 [color]
 	ui = auto
 	diff = auto
@@ -21,10 +23,8 @@
 	default = current
 [alias]
 	a = add
-	b = branch
 	c = commit
-	ch = checkout
-	f = fetch
+	co = checkout
 	ps = push
 	pl = pull
 	s = status -sb
@@ -32,5 +32,4 @@
 	g = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [ghq]
 	root = ~/go/src
-	root = ~/ghq
 

@@ -1,17 +1,47 @@
 # dotfiles
 
+
 ## Setup
 
-1. git clone dotfiles
-1. Install fish
-1. Change login shell
-1. Run install script
-1. mv dotfiles repository under ghq dir
 
-
+### Install Homebrew
 
 ```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+### Setup tools
+
+```
+# Install git
+brew install git
+
+# Install fish
 brew install fish
 chsh -s $(which fish)
+
+# Run install script
 curl -fsSL https://raw.githubusercontent.com/hayashikun/dotfiles/master/setup.fish | fish
 ```
+
+## Others
+
+```bash
+# Basic
+brew install --cask google-chrome
+brew install --cask google-japanese-ime
+
+# Dev Tools
+brew install --cask iterm2
+brew install --cask docker
+brew install --cask visual-studio-code
+
+# Communication
+brew install --cask zoom
+brew install --cask slack
+
+# Utils
+brew install --cask centered
+brew install --cask raycast # Import raycast/Raycast xxxxx rayconfig. Password is in GitHub Secret.
+brew install --cask skitch
+```
+
