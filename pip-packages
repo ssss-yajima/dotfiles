@@ -1,4 +1,5 @@
 pip
+poetry
 
 boto3
 awsume

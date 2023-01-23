@@ -1,5 +1,5 @@
 [user]
-	name = y-megane
+	name = Shinya Yajima
 	email = y.megane88@gmail.com
 [core]
 	filemode = false
@@ -12,24 +12,22 @@
 	diff = auto
 	status = auto
 	branch = auto
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [fetch]
 	prune = true
 [push]
 	default = current
 [alias]
 	a = add
+	b = branch
 	c = commit
+	f = fetch
 	co = checkout
 	ps = push
 	pl = pull
 	s = status -sb
 	sw = switch
-	g = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	g = log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=format:'%Y/%m/%d %H:%M:%S' --all --graph
+	logp = log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
 [ghq]
 	root = ~/go/src
 

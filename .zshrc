@@ -1,6 +1,7 @@
 # Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
-# ========================== 環境変数 =================================
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+# Fig pre block. Keep at the top of this file.
+# # ========================== 環境変数 =================================
 # Python
 export PATH=/usr/local/bin:$PATH
 
@@ -40,25 +41,25 @@ autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
 
 #compdef awsume
-_arguments "*: :($(awsume-autocomplete))"
+# _arguments "*: :($(awsume-autocomplete))"
 
 # ======================== プロンプト =========================
 # pyenvのバージョンをプロンプトに表示
 # https://yonchu.hatenablog.com/entry/2014/09/03/211008
-source ~/work/zsh/zsh-python-prompt/zshrc.zsh
+# source ~/work/zsh/zsh-python-prompt/zshrc.zsh
 
 # --- prompt
-PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}${vcs_info_msg_0_}
-%# '
+# PROMPT='%{${fg[green]}%}[%d]%{${reset_color}%}${vcs_info_msg_0_}
+# %# '
 #RPROMPT='%n@%m'
 
 # pyenvのバージョンをプロンプトに表示
 # https://yonchu.hatenablog.com/entry/2014/09/03/211008
-RPROMPT='$ZSH_PYTHON_PROMPT'
+# RPROMPT='$ZSH_PYTHON_PROMPT'
 
 # --- vcs_info
-autoload -Uz vcs_info
-setopt prompt_subst
+# autoload -Uz vcs_info
+# setopt prompt_subst
 
 # ================================================================
 
@@ -99,15 +100,12 @@ setopt pushd_ignore_dups
 #cdしたあとで、自動的に ls する
 #function chpwd() { ls -1 }
 
-
-
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "(%F{green}%c%u%b%f)"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd(){ vcs_info }
-
+# zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+# zstyle ':vcs_info:*' formats "(%F{green}%c%u%b%f)"
+# zstyle ':vcs_info:*' actionformats '[%b|%a]'
+# precmd(){ vcs_info }
 
 # --- cdr
 # cdr, add-zsh-hook を有効にする
@@ -115,16 +113,16 @@ autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 
 # cdr の設定
-zstyle ':completion:*' recent-dirs-insert both
-zstyle ':chpwd:*' recent-dirs-max 500
-zstyle ':chpwd:*' recent-dirs-default true
-zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
-zstyle ':chpwd:*' recent-dirs-pushd true
+# zstyle ':completion:*' recent-dirs-insert both
+# zstyle ':chpwd:*' recent-dirs-max 500
+# zstyle ':chpwd:*' recent-dirs-default true
+# zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
+# zstyle ':chpwd:*' recent-dirs-pushd true
 
 # ============================== functions ================================
 # Ctrl-R のヒストリ検索にpeco利用
 function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco)
     CURSOR=$#BUFFER
     zle reset-prompt
 }
@@ -132,13 +130,13 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 # ghqで取得したリポジトリへの移動
-function peco-src () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
+function peco-src() {
+    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
 }
 zle -N peco-src
 bindkey '^V' peco-src
@@ -185,8 +183,8 @@ alias issueme='gh issue create --assignee @me'
 alias issues='gh issue list'
 alias pr='gh pr create --assignee @me'
 
-# awsume
-alias awsume="zsh (pyenv which awsume)"
+# Fig post block. Keep at the bottom of this file.
+#
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
