@@ -1,6 +1,4 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-# Fig pre block. Keep at the top of this file.
 # # ========================== 環境変数 =================================
 # Python
 export PATH=/usr/local/bin:$PATH
@@ -168,6 +166,7 @@ alias cat='bat'
 alias ls='exa'
 alias la="ls -lah"
 alias diff='delta'
+alias date='gdate'
 
 # git
 alias g='git'
@@ -185,6 +184,3 @@ alias pr='gh pr create --assignee @me'
 
 # Fig post block. Keep at the bottom of this file.
 #
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

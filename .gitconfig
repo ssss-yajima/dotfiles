@@ -5,6 +5,8 @@
 	filemode = false
 	autocrlf = false
   pager = delta
+	ignorecase = false
+	quotepath = false
 [interactive]
   diffFilter = delta --color-only
 [color]
@@ -31,3 +33,7 @@
 [ghq]
 	root = ~/go/src
 
+[status]
+	showUntrackedFiles = all
+[merge]
+	conflictStyle = diff3

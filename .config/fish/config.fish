@@ -23,7 +23,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-
 # python for m1 mac
 # set -gx LDFLAGS "-L$(xcrun --show-sdk-path)/usr/lib"
 set -gx LDFLAGS -L/opt/homebrew/opt/zlib/lib
@@ -52,7 +51,15 @@ alias diff='delta'
 # git
 alias g='git'
 alias ga='git add'
+alias gaa='git add -A'
 alias gc='git commit'
+alias gcm='git commit -m'
+alias gst='git status'
+alias gsw='git switch'
+
+# docker
+alias d='docker'
+
 
 # python
 alias python=python3
@@ -63,7 +70,11 @@ alias issue='gh issue create'
 alias issueme='gh issue create --assignee @me'
 alias issues='gh issue list'
 alias pr='gh pr create --assignee @me'
+alias prs='gh pr list'
+alias prm='gh pr merge'
 
+
+alias tf='terraform'
 
 # ------------ commands -----------------
 
@@ -112,5 +123,6 @@ function fish_user_key_bindings
     bind \cg ghq_peco_repo # Ctrl + G
     # bind \x1b peco_z                   # Ctrl + [
 end
-eval (direnv hook fish)
+
+direnv hook fish | source
 set -x EDITOR code
