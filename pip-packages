@@ -1,14 +1,7 @@
 pip
 
-boto3
 awsume
+boto3
+openai
 
-numpy
-scipy
-pandas
-tqdm
-matplotlib
-
-isort
-black
-flake8
+ruff

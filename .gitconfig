@@ -1,5 +1,5 @@
 [user]
-	name = y-megane
+	name = ssss-yajima
 	email = y.megane88@gmail.com
 [core]
 	filemode = false
@@ -24,6 +24,7 @@
 [alias]
 	a = add
 	c = commit
+	f = fetch --all
 	co = checkout
 	ps = push
 	pl = pull

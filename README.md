@@ -1,26 +1,26 @@
 # dotfiles
 
-
 ## Setup
-
 
 ### Install Homebrew
 
-```
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+
 ### Setup tools
 
-```
+```bash
 # Install git
 brew install git
 
 # Install fish
 brew install fish
+echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
 chsh -s $(which fish)
 
 # Run install script
-curl -fsSL https://raw.githubusercontent.com/hayashikun/dotfiles/master/setup.fish | fish
+curl -fsSL https://raw.githubusercontent.com/ssss-yajima/dotfiles/master/setup.fish | fish
 ```
 
 ## Others
@@ -44,3 +44,13 @@ brew install --cask skitch
 brew install --cask notion
 ```
 
+- [英かな](https://ei-kana.appspot.com/)
+- Todoist
+- Arc Browswer
+- Font - [Moralerspace](https://github.com/yuru7/moralerspace)
+
+## Import settings
+
+- GoogleIME
+- Raycast
+- iTerm2

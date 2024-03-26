@@ -33,14 +33,16 @@ set -g fish_prompt_pwd_dir_length 0
 
 # ------------ alias -----------------
 
+alias date='gdate'
 alias cat='bat'
-alias ls='exa'
+alias ls='eza'
 alias la="ls -lah"
 alias diff='delta'
 
 # git
 alias g='git'
-alias master='git switch master'
+alias gaa='git add --all'
+alias gcm='git commit -m'
 
 # python
 alias python=python3
@@ -50,10 +52,13 @@ alias pip=pip3
 alias issue='gh issue create'
 alias issueme='gh issue create --assignee @me'
 alias issues='gh issue list'
-alias pr='gh pr create --assignee @me'
+alias prme='gh pr create --assignee @me'
 
-# awsume
+alias d='docker'
+alias tf='terraform'
+
 alias awsume="zsh (pyenv which awsume)"
+alias cdk="npx aws-cdk"
 
 
 # ------------ commands -----------------
@@ -61,23 +66,23 @@ alias awsume="zsh (pyenv which awsume)"
 # history + peco
 if type -q peco
     function peco_select_history_order
-    history|peco $peco_flags|read foo
-    if [ $foo ]
-        commandline $foo
-    else
-        commandline ''
-    end
+        history | peco $peco_flags | read foo
+        if [ $foo ]
+            commandline $foo
+        else
+            commandline ''
+        end
     end
 end
 # ghq + peco
 if type -q peco && type -q ghq
     function ghq_peco_repo
-    set selected_repository (ghq list -p | peco --query "$LBUFFER")
-    if [ -n "$selected_repository" ]
-        cd $selected_repository
-        echo " $selected_repository "
-        commandline -f repaint
-    end
+        set selected_repository (ghq list -p | peco --query "$LBUFFER")
+        if [ -n "$selected_repository" ]
+            cd $selected_repository
+            echo " $selected_repository "
+            commandline -f repaint
+        end
     end
 end
 

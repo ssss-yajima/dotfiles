@@ -2,7 +2,7 @@
 
 cd (dirname (status -f)) && source init.fish
 
-set PYTHON_VERSION "3.10.3"
+set PYTHON_VERSION "3.11.7"
 
 brew install pyenv
 

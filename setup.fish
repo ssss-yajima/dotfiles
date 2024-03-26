@@ -4,7 +4,8 @@ cd (dirname (status -f)) && source init.fish
 
 for cmd in git curl
     if not type -q $cmd
-        echo $cmd "is required."; exit 1
+        echo $cmd "is required."
+        exit 1
     end
 end
 
@@ -23,7 +24,7 @@ if not test -d $CACHE_PATH
 end
 
 # install cli tools with brew
-brew-install jq pwgen tree gh peco ghq bat git-delta exa
+brew-install jq pwgen tree gh peco ghq bat git-delta eza coreutils
 
 # fisher
 if not test -e $HOME/.config/fish/functions/fisher.fish

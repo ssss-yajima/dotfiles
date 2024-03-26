@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
 # ========================== 環境変数 =================================
 # Python
 export PATH=/usr/local/bin:$PATH
@@ -157,23 +155,13 @@ bindkey '^Y' peco-cdr
 
 #============================= ailias ===========================
 
-# C で標準出力をクリップボードにコピーする : http://mollifier.hatenablog.com/entry/20100317/p1
-alias -g C='| pbcopy'
-# peco
-alias -g P='| peco'
-
-# zshrc
-alias zsh='code ~/.zshrc'
-alias szsh='source ~/.zshrc'
-
 alias cat='bat'
-alias ls='exa'
+alias ls='eza'
 alias la="ls -lah"
 alias diff='delta'
 
 # git
 alias g='git'
-alias master='git switch master'
 
 # python
 alias python=python3
@@ -188,5 +176,3 @@ alias pr='gh pr create --assignee @me'
 # awsume
 alias awsume="zsh (pyenv which awsume)"
 
-# Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"

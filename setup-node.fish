@@ -2,7 +2,7 @@
 
 cd (dirname (status -f)) && source init.fish
 
-set NODE_VERSION "16.14.2"
+set NODE_VERSION "20.11.1"
 
 brew install nodenv
 
