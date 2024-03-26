@@ -27,7 +27,6 @@ curl -fsSL https://raw.githubusercontent.com/hayashikun/dotfiles/master/setup.fi
 
 ```bash
 # Basic
-brew install --cask google-chrome
 brew install --cask google-japanese-ime
 
 # Dev Tools
@@ -40,8 +39,8 @@ brew install --cask zoom
 brew install --cask slack
 
 # Utils
-brew install --cask centered
 brew install --cask raycast # Import raycast/Raycast xxxxx rayconfig. Password is in GitHub Secret.
 brew install --cask skitch
+brew install --cask notion
 ```
 
