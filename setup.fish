@@ -23,7 +23,7 @@ if not test -d $CACHE_PATH
 end
 
 # install cli tools with brew
-brew-install jq pwgen tree gh peco ghq bat git-delta exa
+brew-install jq pwgen tree gh peco ghq bat git-delta eza
 
 # fisher
 if not test -e $HOME/.config/fish/functions/fisher.fish

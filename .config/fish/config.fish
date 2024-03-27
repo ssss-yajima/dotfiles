@@ -42,9 +42,10 @@ set -g theme_display_git yes
 # ------------ alias -----------------
 
 alias date='gdate'
+alias unzip='/opt/homebrew/opt/unzip/bin/unzip'
 
 alias cat='bat'
-alias ls='exa'
+alias ls='eza --icons --git'
 alias la="ls -lah"
 alias diff='delta'
 
@@ -56,7 +57,6 @@ alias gc='git commit'
 alias gcm='git commit -m'
 alias gst='git status'
 alias gsw='git switch'
-
 # docker
 alias d='docker'
 
@@ -66,6 +66,7 @@ alias python=python3
 alias pip=pip3
 
 # gh
+alias ghw='gh repo view --web'
 alias issue='gh issue create'
 alias issueme='gh issue create --assignee @me'
 alias issues='gh issue list'
@@ -75,24 +76,20 @@ alias prm='gh pr merge'
 
 
 alias tf='terraform'
+alias ume='awsume'
+alias umel='awsume -l|fzf|awk "{print \$1,\$6}"'
+alias umels='awsume $(awsume -l|fzf|awk "{print \$1}")'
 
-# ------------ commands -----------------
+alias f='fzf --preview "bat --color \"always\" {}"'
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border --ansi'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
 
-# history + peco
-if type -q peco
-    function peco_select_history_order
-        history | peco $peco_flags | read foo
-        if [ $foo ]
-            commandline $foo
-        else
-            commandline ''
-        end
-    end
-end
-# ghq + peco
-if type -q peco && type -q ghq
-    function ghq_peco_repo
-        set selected_repository (ghq list -p | peco --query "$LBUFFER")
+export ENHANCD_HOOK_AFTER_CD=ls
+
+# ghq + fzf
+if type -q fzf && type -q ghq
+    function ghq_fzf_repo
+        set selected_repository (ghq list -p | fzf --query "$LBUFFER" --preview "eza --icons -T -L 1")
         if [ -n "$selected_repository" ]
             cd $selected_repository
             echo " $selected_repository "
@@ -101,28 +98,17 @@ if type -q peco && type -q ghq
     end
 end
 
-# z + peco : change directory
-function peco_z
-    set -l query (commandline)
-
-    if test -n $query
-        set peco_flags --query "$query"
-    end
-
-    z -l | peco $peco_flags | awk '{ print $2 }' | read recent
-    if [ $recent ]
-        cd $recent
-        commandline -r ''
-        commandline -f repaint
-    end
+function fzf_recentd
+    z -l | fzf | awk '{ print $2 }' | read recentd
+    cd $recentd
 end
 
-# Key Bindings
 function fish_user_key_bindings
-    bind \cr peco_select_history_order # Ctrl + R
-    bind \cg ghq_peco_repo # Ctrl + G
-    # bind \x1b peco_z                   # Ctrl + [
+    bind \cg ghq_fzf_repo # Ctrl + G
+    # 最近見たディレクトリに移動
+    bind \cx\cr fzf_recentd
 end
+
 
 direnv hook fish | source
 set -x EDITOR code

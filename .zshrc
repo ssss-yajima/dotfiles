@@ -1,4 +1,3 @@
-# Fig pre block. Keep at the top of this file.
 # # ========================== 環境変数 =================================
 # Python
 export PATH=/usr/local/bin:$PATH
@@ -10,35 +9,34 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 # nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+# export PATH=$HOME/.nodebrew/current/bin:$PATH
+eval "$(nodenv init -)"
+
 
 # go
 export PATH=$HOME/go/bin:$PATH
 
 # Serverlessでconfigを認識させる
-export AWS_SDK_LOAD_CONFIG=1
+# export AWS_SDK_LOAD_CONFIG=1
 
 # ====================== Plugin ============================
-plugins=(
-    # other plugins...
-    zsh-autosuggestions
-)
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
 # ===================  補完  ================================
 # zsh-completion
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit && compinit
 fi
-autoload -Uz compinit && compinit
 
-# 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# # 補完で小文字でも大文字にマッチさせる
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# AWS
+# # AWS
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
 
-#compdef awsume
+# compdef awsume
 # _arguments "*: :($(awsume-autocomplete))"
 
 # ======================== プロンプト =========================
@@ -64,37 +62,37 @@ complete -C '/usr/local/bin/aws_completer' aws
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
-# コマンドのスペルを訂正する
+# # コマンドのスペルを訂正する
 setopt correct
-# 高機能なワイルドカード展開を使用する
+# # 高機能なワイルドカード展開を使用する
 setopt extended_glob
-# Ctrl+Dでzshを終了しない
+# # Ctrl+Dでzshを終了しない
 setopt ignore_eof
 
-# --- history
+# # --- history
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=1000000
 
-# share .zshhistory
+# # share .zshhistory
 setopt inc_append_history
 setopt share_history
-# 直前と同じコマンドの場合はヒストリに追加しない
+# # 直前と同じコマンドの場合はヒストリに追加しない
 setopt hist_ignore_dups
-# 同じコマンドをヒストリに残さない
+# # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
-# スペースから始まるコマンド行はヒストリに残さない
+# # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_ignore_space
-# ヒストリに保存するときに余分なスペースを削除する
+# # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
 
-# --- cd
-# cd なしでもディレクトリ移動
-setopt auto_cd
-# cd [TAB] で以前移動したディレクトリを表示
-setopt auto_pushd
-# pushd したとき、ディレクトリがすでにスタックに含まれていればスタックに追加しない
-setopt pushd_ignore_dups
+# # --- cd
+# # cd なしでもディレクトリ移動
+# setopt auto_cd
+# # cd [TAB] で以前移動したディレクトリを表示
+# setopt auto_pushd
+# # pushd したとき、ディレクトリがすでにスタックに含まれていればスタックに追加しない
+# setopt pushd_ignore_dups
 #cdしたあとで、自動的に ls する
 #function chpwd() { ls -1 }
 
@@ -107,8 +105,8 @@ setopt pushd_ignore_dups
 
 # --- cdr
 # cdr, add-zsh-hook を有効にする
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
+# autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+# add-zsh-hook chpwd chpwd_recent_dirs
 
 # cdr の設定
 # zstyle ':completion:*' recent-dirs-insert both
@@ -117,70 +115,48 @@ add-zsh-hook chpwd chpwd_recent_dirs
 # zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
 # zstyle ':chpwd:*' recent-dirs-pushd true
 
-# ============================== functions ================================
-# Ctrl-R のヒストリ検索にpeco利用
-function peco-history-selection() {
-    BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco)
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
-
-# ghqで取得したリポジトリへの移動
-function peco-src() {
-    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
-        zle accept-line
-    fi
-    zle clear-screen
-}
-zle -N peco-src
-bindkey '^V' peco-src
-
-# cdr + peco
-function peco-cdr() {
-    local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
-    if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
-        zle accept-line
-    fi
-    zle clear-screen
-}
-zle -N peco-cdr
-bindkey '^Y' peco-cdr
-
 #============================= ailias ===========================
-
-# C で標準出力をクリップボードにコピーする : http://mollifier.hatenablog.com/entry/20100317/p1
-alias -g C='| pbcopy'
-# peco
-alias -g P='| peco'
-
-# zshrc
-alias zsh='code ~/.zshrc'
-alias szsh='source ~/.zshrc'
-
 alias cat='bat'
-alias ls='exa'
+alias ls='lsd'
 alias la="ls -lah"
 alias diff='delta'
 alias date='gdate'
 
+alias unzip='/opt/homebrew/opt/unzip/bin/unzip'
+
+
 # git
 alias g='git'
-alias master='git switch master'
+alias ga='git add'
+alias gaa='git add -A'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gst='git status'
+alias gsw='git switch'
+
+# docker
+alias d='docker'
 
 # python
 alias python=python3
 alias pip=pip3
-
 # gh
+alias ghw='gh repo view --web'
 alias issue='gh issue create'
 alias issueme='gh issue create --assignee @me'
 alias issues='gh issue list'
 alias pr='gh pr create --assignee @me'
+alias prs='gh pr list'
+alias prm='gh pr merge'
+alias sug='gh copilot suggest'
+alias exp='gh copilot explain'
 
-# Fig post block. Keep at the bottom of this file.
-#
+alias tf='terraform'
+alias ume='awsume'
+alias umel='awsume -l|fzf|awk "{print \$1,\$6}"'
+alias umels='awsume $(awsume -l|fzf|awk "{print \$1}")'
+
+
+alias G='cd $(ghq root)/$(ghq list | fzf --reverse)'
+
+alias f='fzf --preview "bat --color \"always\" {}"'
