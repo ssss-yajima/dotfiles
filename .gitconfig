@@ -1,10 +1,12 @@
 [user]
-	name = ssss-yajima
+	name = Shinya Yajima
 	email = y.megane88@gmail.com
 [core]
 	filemode = false
 	autocrlf = false
   pager = delta
+	ignorecase = false
+	quotepath = false
 [interactive]
   diffFilter = delta --color-only
 [color]
@@ -12,17 +14,13 @@
 	diff = auto
 	status = auto
 	branch = auto
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [fetch]
 	prune = true
 [push]
 	default = current
 [alias]
 	a = add
+	b = branch
 	c = commit
 	f = fetch --all
 	co = checkout
@@ -30,7 +28,12 @@
 	pl = pull
 	s = status -sb
 	sw = switch
-	g = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	g = log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=format:'%Y/%m/%d %H:%M:%S' --all --graph
+	logp = log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
 [ghq]
 	root = ~/go/src
 
+[status]
+	showUntrackedFiles = all
+[merge]
+	conflictStyle = diff3
