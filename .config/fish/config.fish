@@ -72,7 +72,7 @@ alias pr='gh pr create --assignee @me'
 alias prs='gh pr list'
 alias prm='gh pr merge'
 
-alias cdk="npx aws-cdk"
+alias cdk="npx cdk"
 alias tf='terraform'
 alias ume='awsume'
 alias umel='awsume -l|fzf|awk "{print \$1,\$6}"'
