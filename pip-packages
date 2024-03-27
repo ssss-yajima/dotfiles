@@ -1,8 +1,8 @@
 pip
 poetry
 
+python-dotenv
 awsume
 boto3
 openai
-
 ruff

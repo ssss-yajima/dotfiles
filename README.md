@@ -47,7 +47,8 @@ brew install --cask notion
 - [英かな](https://ei-kana.appspot.com/)
 - Todoist
 - Arc Browswer
-- Font - [Moralerspace](https://github.com/yuru7/moralerspace)
+- Editor Font - [Moralerspace](https://github.com/yuru7/moralerspace)
+- Terminal Font - [HackGen35ConsoleNF-Regular](https://github.com/yuru7/moralerspace?tab=readme-ov-file)
 
 ## Import settings
 
