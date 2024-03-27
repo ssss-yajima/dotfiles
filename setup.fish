@@ -24,7 +24,7 @@ if not test -d $CACHE_PATH
 end
 
 # install cli tools with brew
-brew-install jq pwgen tree gh ghq bat git-delta eza coreutils unzip direnv fzf
+brew-install yq jq pwgen tree gh ghq bat git-delta eza coreutils unzip direnv fzf
 
 # fisher
 if not test -e $HOME/.config/fish/functions/fisher.fish
