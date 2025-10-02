@@ -156,3 +156,8 @@ alias ume='awsume'
 alias umel='awsume -l|fzf|awk "{print \$1,\$6}"'
 alias umels='awsume $(awsume -l|fzf|awk "{print \$1}")'
 
+
+. "$HOME/.local/bin/env"
+. "/Users/shinya_yajima/.deno/env"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

@@ -39,6 +39,9 @@ set -g theme_use_abbreviated_branch_name no
 set -g theme_display_node yes
 set -g theme_display_git yes
 
+set -gx FZF_DEFAULT_OPTS '--height 50% --reverse --border'
+
+
 # ------------ alias -----------------
 
 alias date='gdate'
@@ -48,6 +51,7 @@ alias cat='bat'
 alias ls='eza --icons --git'
 alias la="ls -lah"
 alias diff='delta'
+alias ymd="date '+%Y%m%d'"
 
 # git
 alias g='git'
@@ -58,6 +62,10 @@ alias gcm='git commit -m'
 # docker
 alias d='docker'
 
+# cude/cursor
+alias c='cursor'
+
+alias pn='pnpm'
 
 # python
 alias python=python3
@@ -74,9 +82,48 @@ alias prm='gh pr merge'
 
 alias cdk="npx cdk"
 alias tf='terraform'
+
 alias ume='awsume'
-alias umel='awsume -l|fzf|awk "{print \$1,\$6}"'
-alias umels='awsume $(awsume -l|fzf|awk "{print \$1}")'
+alias ume='awsume -a -o '
+alias umel='awsume -l|fzf|awk "{print \$1,\$7}"'
+alias umels='awsume -a -o $(awsume -l|fzf|awk "{print \$1}")'
 
 direnv hook fish | source
 set -x EDITOR code
+/Users/shinya_yajima/.local/bin/mise activate fish | source
+
+
+# ClaudeCode
+alias cc="claude"
+alias ccc="claude --continue"
+alias cccc="cursor ~/.claude"
+alias yolo="claude --dangerously-skip-permissions"
+alias yoloc="claude --continue --dangerously-skip-permissions"
+
+#mise
+alias m='mise'
+alias mr='mise run'
+alias mrs='mise tasks'
+
+
+# tinker関数 - プロジェクトを作成して自動的にそのディレクトリに移動
+function tinker
+    set workroom_dir ~/go/src/github.com/ssss-yajima/workroom
+    cd $workroom_dir
+    set project_path (./scripts/tinker.sh $argv)
+    if test $status -eq 0
+        cd $workroom_dir/$project_path
+        echo "Created and moved to: $project_path"
+    else
+        echo "Failed to create project"
+    end
+end
+
+# 短縮版
+function tk
+    tinker $argv
+end
+
+alias wk="cd ~/go/src/github.com/ssss-yajima/workroom/workbench;la;echo '>>> run tk to create work folder'"
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
